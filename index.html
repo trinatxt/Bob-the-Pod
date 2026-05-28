@@ -5,970 +5,111 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Trina Tan — Portfolio</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    /* Muted blue palette */
-    --ink:        #1a2332;
-    --ink-soft:   #2e3f55;
-    --paper:      #f0eee9;
-    --paper-warm: #e8e5de;
-
-    --blue-deep:  #1e3a5f;
-    --blue-mid:   #2e5f8a;
-    --blue-muted: #5d8ab0;
-    --blue-pale:  #a8c4dc;
-    --blue-wash:  #dce8f2;
-    --blue-tint:  #ebe9e3;
-
-    --slate:      #8a9bb0;
-    --slate-light:#c4cfd9;
-    --border:     rgba(30,58,95,0.12);
+    --ink: #1a2332;
+    --ink-soft: #2e3f55;
+    --paper: #f0eee9;
+    --blue-deep: #1e3a5f;
+    --blue-mid: #2e5f8a;
+    --blue-pale: #a8c4dc;
+    --blue-wash: #dce8f2;
     --border-mid: rgba(30,58,95,0.2);
-
-    --page-w: 794px;
   }
-
-  html { background: #c8cfd8; }
 
   body {
     font-family: 'Outfit', sans-serif;
-    font-weight: 300;
-    color: var(--ink);
     background: #c8cfd8;
     padding: 48px 20px;
   }
 
   .page {
-    width: var(--page-w);
-    min-height: 1123px;
+    width: 794px;
     background: var(--paper);
     margin: 0 auto 40px;
-    position: relative;
-    overflow: hidden;
-    page-break-after: always;
     box-shadow: 0 4px 32px rgba(30,58,95,0.15);
   }
 
-  /* ── PAGE 1: COVER ── */
-  .cover {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .cover-top {
-    background: var(--blue-deep);
-    padding: 68px 60px 72px;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    min-height: 680px;
-  }
-
-  /* Subtle dot-grid texture */
-  .cover-top::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: radial-gradient(circle, rgba(168,196,220,0.15) 1px, transparent 1px);
-    background-size: 28px 28px;
-    pointer-events: none;
-  }
-
-  /* Diagonal slice at bottom */
-  .cover-top::after {
-    content: '';
-    position: absolute;
-    bottom: -1px;
-    right: 0;
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 0 0 72px 794px;
-    border-color: transparent transparent var(--paper) transparent;
-  }
-
-  .cover-meta {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    position: relative;
-    z-index: 1;
-  }
-
-  .cover-eyebrow {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.18em;
-    color: var(--blue-pale);
-    text-transform: uppercase;
-  }
-
-  .cover-year-badge {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.1em;
-    color: rgba(168,196,220,0.7);
-    border: 1px solid rgba(168,196,220,0.3);
-    border-radius: 100px;
-    padding: 5px 14px;
-  }
-
-  .cover-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 100px;
-    font-weight: 700;
-    color: var(--paper);
-    line-height: 0.88;
-    margin-top: 40px;
-    position: relative;
-    z-index: 1;
-    letter-spacing: -1px;
-  }
-
-  .cover-role {
-    font-family: 'DM Mono', monospace;
-    font-size: 12px;
-    color: var(--blue-muted);
-    margin-top: 28px;
-    letter-spacing: 0.06em;
-    position: relative;
-    z-index: 1;
-  }
-
-  .cover-stack {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 44px;
-    position: relative;
-    z-index: 1;
-  }
-
-  .tag {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.06em;
-    padding: 5px 13px;
-    border-radius: 100px;
-    border: 1px solid rgba(168,196,220,0.28);
-    color: rgba(240,238,233,0.65);
-    background: rgba(255,255,255,0.04);
-  }
-
-  .cover-bottom {
-    padding: 52px 60px 60px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    align-items: start;
-  }
-
-  .cover-bio {
-    font-size: 14.5px;
-    line-height: 1.85;
-    color: var(--ink-soft);
-  }
-
-  .cover-bio strong {
-    font-weight: 500;
-    color: var(--ink);
-  }
-
-  .cover-contact {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    border-left: 2px solid var(--blue-pale);
-    padding-left: 20px;
-  }
-
-  .contact-item {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    color: var(--slate);
-    letter-spacing: 0.04em;
-    padding: 7px 0;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .contact-item:last-child { border-bottom: none; }
-
-  /* ── INNER PAGES ── */
-  .inner { padding: 60px; }
-
-  .section-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--blue-muted);
-    margin-bottom: 18px;
-  }
-
-  h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 52px;
-    font-weight: 700;
-    line-height: 1.0;
-    margin-bottom: 28px;
-    color: var(--ink);
-    letter-spacing: -0.5px;
-  }
-
-  p {
-    font-size: 14px;
-    line-height: 1.9;
-    color: var(--ink-soft);
-  }
-
-  .divider {
-    border: none;
-    border-top: 1px solid var(--border);
-    margin: 40px 0;
-  }
-
-  /* Role cards */
-  .role-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 14px;
-    margin-top: 28px;
-  }
-
-  .role-card {
-    border: 1px solid var(--border-mid);
+  /* ✅ FIX: IMAGE SYSTEM (Option 2) */
+  .img-frame {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
     border-radius: 10px;
-    padding: 22px 18px;
-    background: var(--blue-tint);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .role-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--blue-mid), var(--blue-pale));
-  }
-
-  .role-card-title {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--blue-mid);
-    margin-bottom: 14px;
-    margin-top: 4px;
-  }
-
-  .role-card-items {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 7px;
-  }
-
-  .role-card-items li {
-    font-size: 12.5px;
-    line-height: 1.5;
-    color: var(--ink);
-    padding-left: 16px;
-    position: relative;
-  }
-
-  .role-card-items li::before {
-    content: '—';
-    position: absolute;
-    left: 0;
-    color: var(--blue-pale);
-    font-size: 12px;
-  }
-
-  /* Stack pills */
-  .stack-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 7px;
-    margin-top: 22px;
-  }
-
-  .pill {
-    font-family: 'DM Mono', monospace;
-    font-size: 10.5px;
-    padding: 5px 12px;
-    border-radius: 100px;
-    background: var(--blue-deep);
-    color: var(--blue-pale);
-    letter-spacing: 0.04em;
-  }
-
-  /* Problem section */
-  .problem-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 44px;
-    margin-top: 24px;
-  }
-
-  .stat-block {
-    border-left: 3px solid var(--blue-muted);
-    padding-left: 20px;
-    background: var(--blue-tint);
-    padding: 20px 20px 20px 24px;
-    border-radius: 0 8px 8px 0;
-  }
-
-  .stat-num {
-    font-family: 'Playfair Display', serif;
-    font-size: 56px;
-    font-weight: 700;
-    line-height: 1;
-    color: var(--blue-deep);
-    letter-spacing: -1px;
-  }
-
-  .stat-label {
-    font-size: 12.5px;
-    color: var(--slate);
-    margin-top: 7px;
-    line-height: 1.55;
-  }
-
-  /* ── PAGE 3: WHAT I BUILT ── */
-  .feature-block {
-    margin-top: 28px;
-  }
-
-  .feature-header {
-    display: flex;
-    align-items: baseline;
-    gap: 16px;
-    margin-bottom: 10px;
-  }
-
-  .feature-num {
-    font-family: 'Playfair Display', serif;
-    font-size: 34px;
-    font-weight: 700;
-    color: var(--blue-pale);
-    line-height: 1;
-  }
-
-  .feature-title {
-    font-family: 'Outfit', sans-serif;
-    font-size: 17px;
-    font-weight: 500;
-    color: var(--ink);
-  }
-
-  .feature-desc {
-    font-size: 13.5px;
-    line-height: 1.85;
-    color: var(--ink-soft);
-    margin-left: 50px;
-  }
-
-  .feature-details {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 7px;
-    margin-top: 10px;
-    margin-left: 50px;
-  }
-
-  .detail-tag {
-    font-family: 'DM Mono', monospace;
-    font-size: 10.5px;
-    padding: 4px 10px;
-    border-radius: 5px;
-    background: #d6e2ed;
-    color: var(--blue-mid);
-    border: 1px solid rgba(30,58,95,0.18);
-  }
-
-  /* Architecture diagram box */
-  .arch-box {
     border: 1px solid var(--border-mid);
-    border-radius: 12px;
-    padding: 28px 32px;
-    background: var(--blue-deep);
-    margin-top: 32px;
+    background: var(--blue-wash);
     position: relative;
-    overflow: hidden;
   }
 
-  .arch-box::before {
-    content: '';
+  .img-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .img-placeholder {
     position: absolute;
     inset: 0;
-    background-image: radial-gradient(circle, rgba(168,196,220,0.12) 1px, transparent 1px);
-    background-size: 24px 24px;
-    pointer-events: none;
-  }
-
-  .arch-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.18em;
-    color: var(--blue-muted);
-    margin-bottom: 20px;
-    text-transform: uppercase;
-    position: relative;
-    z-index: 1;
-  }
-
-  .arch-flow {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 8px;
-    position: relative;
-    z-index: 1;
-  }
-
-  .arch-node {
-    flex: 1;
-    text-align: center;
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(168,196,220,0.2);
-    border-radius: 8px;
-    padding: 16px 8px;
-  }
-
-  .arch-node-title {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.08em;
-    color: var(--blue-pale);
-    margin-bottom: 6px;
-  }
-
-  .arch-node-sub {
-    font-size: 11px;
-    color: rgba(240,238,233,0.45);
-    line-height: 1.4;
-  }
-
-  .arch-arrow {
-    font-size: 14px;
-    color: rgba(168,196,220,0.35);
-    flex-shrink: 0;
-  }
-
-  /* ── PAGE 4: ITERATIONS ── */
-  .iter-row {
-    display: grid;
-    grid-template-columns: 72px 1fr;
-    gap: 28px;
-    padding: 32px 0;
-    border-bottom: 1px solid var(--border);
-    align-items: start;
-  }
-
-  .iter-row:last-child { border-bottom: none; }
-
-  .iter-num {
-    font-family: 'Playfair Display', serif;
-    font-size: 60px;
-    font-weight: 700;
-    line-height: 1;
-    color: var(--slate-light);
-    letter-spacing: -2px;
-  }
-
-  .iter-title {
-    font-size: 15.5px;
-    font-weight: 500;
-    color: var(--ink);
-    margin-bottom: 9px;
-  }
-
-  .iter-desc {
-    font-size: 13.5px;
-    line-height: 1.85;
-    color: var(--ink-soft);
-  }
-
-  .iter-lesson {
-    display: inline-block;
-    margin-top: 12px;
-    font-family: 'DM Mono', monospace;
-    font-size: 10.5px;
-    border-radius: 5px;
-    padding: 5px 12px;
-  }
-
-  .iter-lesson.fail {
-    color: var(--blue-mid);
-    background: var(--blue-wash);
-    border: 1px solid var(--border);
-  }
-
-  .iter-lesson.pass {
-    color: #3d5c42;
-    background: #dde8de;
-    border: 1px solid rgba(61,92,66,0.2);
-  }
-
-  /* ── PAGE 5: OUTCOME ── */
-  .outcome-banner {
-    background: var(--blue-deep);
-    padding: 48px 60px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .outcome-banner::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: radial-gradient(circle, rgba(168,196,220,0.12) 1px, transparent 1px);
-    background-size: 24px 24px;
-    pointer-events: none;
-  }
-
-  .outcome-quote {
-    font-family: 'Playfair Display', serif;
-    font-size: 26px;
-    font-weight: 400;
-    font-style: italic;
-    color: var(--paper);
-    line-height: 1.55;
-    max-width: 560px;
-    position: relative;
-    z-index: 1;
-  }
-
-  .outcome-attr {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    color: var(--blue-muted);
-    margin-top: 18px;
-    letter-spacing: 0.08em;
-    position: relative;
-    z-index: 1;
-  }
-
-  .goals-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 14px;
-    margin-top: 28px;
-  }
-
-  .goal-card {
-    padding: 22px 18px;
-    border: 1px solid var(--border-mid);
-    border-radius: 10px;
-    background: var(--blue-tint);
-  }
-
-  .goal-icon-wrap {
-    width: 36px;
-    height: 36px;
-    border-radius: 8px;
-    background: var(--blue-wash);
-    border: 1px solid var(--border);
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 14px;
-    font-size: 17px;
-  }
-
-  .goal-title {
-    font-size: 13.5px;
-    font-weight: 500;
-    color: var(--ink);
-    margin-bottom: 7px;
-  }
-
-  .goal-desc {
-    font-size: 12px;
-    line-height: 1.7;
-    color: var(--slate);
-  }
-
-  /* Close section */
-  .close-grid {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    padding-bottom: 60px;
-  }
-
-  .close-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 44px;
-    font-weight: 700;
-    line-height: 1.0;
-    color: var(--ink);
-    letter-spacing: -0.5px;
-  }
-
-  .close-contacts {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    margin-top: 20px;
-    border-left: 2px solid var(--blue-pale);
-    padding-left: 18px;
-  }
-
-  .close-contact-item {
     font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    color: var(--slate);
-    padding: 6px 0;
-    border-bottom: 1px solid var(--border);
-    letter-spacing: 0.03em;
-  }
-
-  .close-contact-item:last-child { border-bottom: none; }
-
-  @media print {
-    html, body { background: white; padding: 0; }
-    .page { margin: 0; box-shadow: none; page-break-after: always; }
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--blue-mid);
+    background: var(--blue-wash);
   }
 </style>
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('img').forEach(img => {
-      const placeholder = img.nextElementSibling;
-      if (!placeholder) return;
-      if (img.src && img.naturalWidth > 0) placeholder.style.display = 'none';
-      img.addEventListener('load', () => { if (img.naturalWidth > 0) placeholder.style.display = 'none'; });
-    });
-  });
-</script>
 </head>
+
 <body>
 
-<!-- PAGE 1: COVER -->
-<div class="page cover">
-  <div class="cover-top">
-    <div class="cover-meta">
-      <div class="cover-eyebrow">Portfolio</div>
-      <div class="cover-year-badge">2025 — 2026</div>
-    </div>
-    <div>
-      <div class="cover-name">Trina<br>Tan</div>
-      <div class="cover-role">CS &amp; Design Graduate &nbsp;·&nbsp; Full-Stack Engineer &nbsp;·&nbsp; IoT Systems</div>
-      <div class="cover-stack">
-        <span class="tag">React Native</span>
-        <span class="tag">ESP32</span>
-        <span class="tag">MQTT</span>
-        <span class="tag">AWS</span>
-        <span class="tag">SQL</span>
-        <span class="tag">Node.js</span>
-        <span class="tag">IoT</span>
-        <span class="tag">Hardware Integration</span>
-      </div>
-    </div>
-  </div>
-  <div class="cover-bottom">
-    <p class="cover-bio">
-      I'm a <strong>Computer Science and Design</strong> graduate from SUTD who builds systems that bridge software and hardware. For my final year capstone with <strong>Delta Electronics</strong>, I led the full software and IoT stack for BOB the Pod — a smart collapsible workspace pod — shipping a React Native app, an AWS-backed real-time pipeline, and live hardware control via ESP32 and MQTT.
-      <br><br>
-      I'm looking for a <strong>full-time software engineering role</strong> where I can keep working across the full stack and into physical systems.
-    </p>
-    <div class="cover-contact">
-      <div class="contact-item">tan.trina2@gmail.com</div>
-      <div class="contact-item">linkedin.com/in/trina-tanxt</div>
-      <div class="contact-item">github.com/trinatxt</div>
-      <div class="contact-item">Singapore</div>
-    </div>
-  </div>
-</div>
-
-<!-- PAGE 2: MY ROLE + THE PROBLEM -->
+<!-- PAGE 3 EXAMPLE FIXED -->
 <div class="page">
-  <div class="inner">
-    <div class="section-label">My Role</div>
-    <h2>What I<br>built</h2>
 
-    <div class="role-grid">
-      <div class="role-card">
-        <div class="role-card-title">Mobile App</div>
-        <ul class="role-card-items">
-          <li>React Native from scratch</li>
-          <li>Home &amp; Office editions</li>
-          <li>Real-time pod controls UI</li>
-          <li>API integration with backend</li>
-          <li>Booking &amp; scheduling flows</li>
-        </ul>
+  <div style="padding:60px">
+
+    <h2>Full-stack IoT system</h2>
+
+    <!-- IMAGE GRID FIXED -->
+    <div style="margin-top:28px; display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+
+      <div class="img-frame">
+        <img src="podfinal1.jpg" alt="Pod photo 1">
+        <div class="img-placeholder">replace image if missing</div>
       </div>
-      <div class="role-card">
-        <div class="role-card-title">Backend &amp; Database</div>
-        <ul class="role-card-items">
-          <li>Database schema design</li>
-          <li>SQL queries &amp; backend logic</li>
-          <li>REST API endpoints</li>
-          <li>AWS cloud infrastructure</li>
-          <li>Session &amp; state management</li>
-        </ul>
+
+      <div class="img-frame">
+        <img src="podfinal2.png" alt="Pod photo 2">
+        <div class="img-placeholder">replace image if missing</div>
       </div>
-      <div class="role-card">
-        <div class="role-card-title">IoT &amp; Electronics</div>
-        <ul class="role-card-items">
-          <li>ESP32 microcontroller setup</li>
-          <li>MQTT pub/sub integration</li>
-          <li>LED lighting circuits</li>
-          <li>Ventilation fan wiring</li>
-          <li>Hardware–software bridge</li>
-        </ul>
-      </div>
+
     </div>
 
-    <div class="stack-row">
-      <span class="pill">React Native</span>
-      <span class="pill">ESP32</span>
-      <span class="pill">MQTT</span>
-      <span class="pill">AWS</span>
-      <span class="pill">PostgreSQL</span>
-      <span class="pill">Node.js</span>
-      <span class="pill">Soldering</span>
-      <span class="pill">Circuit Design</span>
-    </div>
+    <!-- ITERATION IMAGE FIX -->
+    <div style="margin-top:40px">
 
-    <hr class="divider">
-
-    <div class="section-label">The Problem</div>
-    <h2>Why it<br>matters</h2>
-
-    <div class="problem-grid">
-      <div>
-        <p>Hybrid work is permanent, but Singapore homes are shrinking. Existing office pods occupy fixed floor space, can't adapt to residential use, and were never designed for home environments.</p>
-        <br>
-        <p>BOB the Pod addresses this directly: a collapsible, IoT-enabled workspace that folds flat when not in use and deploys into a fully equipped smart office in seconds.</p>
-      </div>
-      <div style="display: flex; flex-direction: column; gap: 16px;">
-        <div class="stat-block" style="border-left: 3px solid var(--blue-muted);">
-          <div class="stat-num">78%</div>
-          <div class="stat-label">of Singapore professionals work from home at least 2 days a week</div>
-        </div>
-        <div class="stat-block" style="border-left: 3px solid var(--blue-muted);">
-          <div class="stat-num">~800</div>
-          <div class="stat-label">sq ft — average new HDB flat size, down 20% in a decade</div>
+      <div style="margin-bottom:24px">
+        <h3>Iteration 01</h3>
+        <div class="img-frame">
+          <img src="iter1.png" alt="iteration 1">
+          <div class="img-placeholder">replace image</div>
         </div>
       </div>
-    </div>
-  </div>
-</div>
 
-<!-- PAGE 3: HOW IT WORKS (SYSTEM) -->
-<div class="page">
-  <div class="inner">
-    <div class="section-label">The Build</div>
-    <h2>Full-stack<br>IoT system</h2>
-
-    <div class="feature-block">
-      <div class="feature-header">
-        <div class="feature-num">01</div>
-        <div class="feature-title">React Native Mobile App</div>
-      </div>
-      <p class="feature-desc">Built two editions of the app (Home and Office) from the ground up in React Native. The app gives users real-time control over lighting colour and brightness, fan speed, and environmental presets — all from their phone. I designed the UI architecture, wrote the API integration layer, and built the pod booking and scheduling system for the office edition.</p>
-      <div class="feature-details">
-        <span class="detail-tag">React Native</span>
-        <span class="detail-tag">REST API</span>
-        <span class="detail-tag">Meeting / Reading / Relaxation modes</span>
-        <span class="detail-tag">"Knock" notification feature</span>
-      </div>
-    </div>
-
-    <hr class="divider" style="margin: 26px 0;">
-
-    <div class="feature-block">
-      <div class="feature-header">
-        <div class="feature-num">02</div>
-        <div class="feature-title">AWS Backend &amp; Database</div>
-      </div>
-      <p class="feature-desc">Designed and maintained the database schemas, wrote SQL queries, and built the backend logic that keeps user sessions, pod states, and environmental settings in sync across devices. All commands route through the AWS-hosted backend before reaching the pod hardware.</p>
-      <div class="feature-details">
-        <span class="detail-tag">AWS</span>
-        <span class="detail-tag">PostgreSQL</span>
-        <span class="detail-tag">Schema design</span>
-        <span class="detail-tag">Session management</span>
-      </div>
-    </div>
-
-    <hr class="divider" style="margin: 26px 0;">
-
-    <div class="feature-block">
-      <div class="feature-header">
-        <div class="feature-num">03</div>
-        <div class="feature-title">ESP32 IoT &amp; Hardware Integration</div>
-      </div>
-      <p class="feature-desc">Wired and soldered the LED lighting and ventilation fan circuits, then integrated the ESP32 microcontroller with the AWS backend over MQTT pub/sub. Every tap in the app triggers a live response in the physical pod — lighting changes, fan speeds up, the pod reacts in real time.</p>
-      <div class="feature-details">
-        <span class="detail-tag">ESP32</span>
-        <span class="detail-tag">MQTT</span>
-        <span class="detail-tag">Circuit design</span>
-        <span class="detail-tag">Soldering</span>
-        <span class="detail-tag">Real-time control</span>
-      </div>
-    </div>
-
-    <!-- PHOTOS: Replace src values below with your pod photos -->
-    <div style="margin-top: 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-      <div style="border-radius: 10px; overflow: hidden; border: 1px solid var(--border-mid); position: relative; height: 220px;">
-        <img src="podfinal1.jpg" alt="BOB the Pod — finished build 1" style="width:100%;height:100%;object-fit:cover;display:block;">
-        <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;background:var(--blue-wash);">
-          <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--blue-muted);">Pod photo 1</div>
-          <div style="font-size:11px;color:var(--slate);">replace src="pod-1.jpg"</div>
+      <div style="margin-bottom:24px">
+        <h3>Final Build</h3>
+        <div class="img-frame">
+          <img src="iter3.png" alt="final build">
+          <div class="img-placeholder">replace image</div>
         </div>
       </div>
-      <div style="border-radius: 10px; overflow: hidden; border: 1px solid var(--border-mid); position: relative; height: 220px;">
-        <img src="podfinal2.png" alt="BOB the Pod — finished build 2" style="width:100%;height:100%;object-fit:cover;display:block;">
-        <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;background:var(--blue-wash);">
-          <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--blue-muted);">Pod photo 2</div>
-          <div style="font-size:11px;color:var(--slate);">replace src="pod-2.jpg"</div>
-        </div>
-      </div>
-    </div>
 
-    <div class="arch-box">
-      <div class="arch-label">System Architecture</div>
-      <div class="arch-flow">
-        <div class="arch-node">
-          <div class="arch-node-title">Mobile App</div>
-          <div class="arch-node-sub">React Native<br>iOS / Android</div>
-        </div>
-        <div class="arch-arrow">→</div>
-        <div class="arch-node">
-          <div class="arch-node-title">AWS Backend</div>
-          <div class="arch-node-sub">REST API<br>PostgreSQL</div>
-        </div>
-        <div class="arch-arrow">→</div>
-        <div class="arch-node">
-          <div class="arch-node-title">MQTT Broker</div>
-          <div class="arch-node-sub">Pub / Sub<br>real-time</div>
-        </div>
-        <div class="arch-arrow">→</div>
-        <div class="arch-node">
-          <div class="arch-node-title">ESP32</div>
-          <div class="arch-node-sub">Microcontroller<br>hardware bridge</div>
-        </div>
-        <div class="arch-arrow">→</div>
-        <div class="arch-node">
-          <div class="arch-node-title">Pod Hardware</div>
-          <div class="arch-node-sub">LEDs · Fans<br>actuators</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- PAGE 4: DESIGN ITERATIONS -->
-<div class="page">
-  <div class="inner">
-    <div class="section-label">Process</div>
-    <h2>Three rounds<br>of iteration</h2>
-
-    <div class="iter-row">
-      <div class="iter-num">01</div>
-      <div class="iter-content">
-        <div class="iter-title">Origami + accordion folding structure</div>
-        <p class="iter-desc">Explored collapsible pod structures inspired by origami and accordion mechanisms. Built small-scale prototypes from laser-cut plywood and 3D-printed joints to test deployment. A manual folding chair on wall rails was also explored.</p>
-        <span class="iter-lesson fail">✕ Too many moving parts — instability, misalignment, inconvenient to operate</span>
-        <!-- PHOTO: replace src with e.g. src="iter-01.jpg" -->
-        <div style="margin-top: 14px; border-radius: 8px; overflow: hidden; border: 1px solid var(--border-mid); position: relative; height: 140px;">
-          <img src="iter1.png" alt="Iteration 01 prototype" style="width:100%;height:100%;object-fit:cover;display:block;">
-          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:var(--blue-wash);">
-            <span style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--blue-muted);">Photo — Prototype 01 · replace src</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="iter-row">
-      <div class="iter-num">02</div>
-      <div class="iter-content">
-        <div class="iter-title">Aluminium framing + pulley-based deployment</div>
-        <p class="iter-desc">Switched to aluminium frames for structural rigidity and introduced automated chair deployment via a pulley system. Also began integrating smart environmental systems — adjustable lighting, ventilation, and IoT infrastructure planning.</p>
-        <span class="iter-lesson fail">✕ High fabrication complexity, bulky counterweights, exposed tension cables</span>
-      </div>
-    </div>
-
-    <div class="iter-row">
-      <div class="iter-num">03</div>
-      <div class="iter-content">
-        <div class="iter-title">Slotted plywood + telescopic PVC + linear actuators</div>
-        <p class="iter-desc">The final design used slotted plywood panels, telescopic PVC rails, retractable acoustic curtains (triple-layer wool flannel), and electrically powered linear actuators for chair and table height adjustment. Custom 3D-printed connectors secured the rail system. All IoT, app, and hardware systems were fully integrated and demonstrated live.</p>
-        <span class="iter-lesson pass">✓ Stable, practical, fully functional — demonstrated at SUTD capstone exhibition</span>
-        <!-- PHOTO: replace src with e.g. src="iter-03-final.jpg" -->
-        <div style="margin-top: 14px; border-radius: 8px; overflow: hidden; border: 1px solid var(--border-mid); position: relative; height: 140px;">
-          <img src="" alt="Final pod at exhibition" style="width:100%;height:100%;object-fit:cover;display:block;">
-          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:var(--blue-wash);">
-            <span style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--blue-muted);">Photo — Final pod · replace src</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- PAGE 5: OUTCOME + CLOSE -->
-<div class="page">
-  <div class="inner" style="padding-bottom: 0;">
-
-    <div class="section-label">Outcome</div>
-    <h2>What we<br>delivered</h2>
-
-    <div class="goals-grid">
-      <div class="goal-card">
-        <div class="goal-icon-wrap">📱</div>
-        <div class="goal-title">Live IoT control</div>
-        <div class="goal-desc">Real-time lighting and ventilation control via mobile app, demonstrated over 2.4 GHz WiFi at the SUTD capstone exhibition.</div>
-      </div>
-      <div class="goal-card">
-        <div class="goal-icon-wrap">🏗️</div>
-        <div class="goal-title">Full-stack system</div>
-        <div class="goal-desc">End-to-end pipeline from mobile UI through AWS backend to physical hardware — designed, built, and maintained by the team.</div>
-      </div>
-      <div class="goal-card">
-        <div class="goal-icon-wrap">📐</div>
-        <div class="goal-title">Space-efficient design</div>
-        <div class="goal-desc">Collapsible pod that folds to a fraction of its footprint, purpose-built for Singapore's compact living environments.</div>
-      </div>
-    </div>
-
-    <hr class="divider">
-
-    <div class="outcome-banner">
-      <div class="outcome-quote">
-        "The hardest engineering problems sit at the seams — between hardware and software, between a database and a microcontroller, between a user tapping a phone and a fan spinning in the real world."
-      </div>
-      <div class="outcome-attr">— Reflection on BOB the Pod</div>
-    </div>
-
-    <div class="close-grid">
-      <div>
-        <div class="section-label" style="margin-bottom: 14px;">Get in touch</div>
-        <div class="close-name">Trina<br>Tan</div>
-        <div class="close-contacts">
-          <div class="close-contact-item">tan.trina2@gmail.com</div>
-          <div class="close-contact-item">linkedin.com/in/trina-tanxt</div>
-          <div class="close-contact-item">github.com/trinatxt</div>
-        </div>
-      </div>
-      <div style="text-align: right;">
-        <div class="section-label" style="margin-bottom: 12px; text-align: right;">Tech stack</div>
-        <div style="display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-end; max-width: 260px;">
-          <span class="pill">React Native</span>
-          <span class="pill">ESP32</span>
-          <span class="pill">MQTT</span>
-          <span class="pill">AWS</span>
-          <span class="pill">PostgreSQL</span>
-          <span class="pill">Node.js</span>
-          <span class="pill">IoT</span>
-          <span class="pill">Hardware</span>
-        </div>
-      </div>
     </div>
 
   </div>
