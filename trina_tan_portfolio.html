@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trina Tan — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #0e0e0e;
+    --white: #f5f3ee;
+    --accent: #c8f45a;
+    --accent2: #3a3aff;
+    --mid: #8a8a7a;
+    --border: rgba(14,14,14,0.12);
+    --page-w: 794px;
+  }
+
+  html { background: #d4d0c8; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    color: var(--black);
+    background: #d4d0c8;
+    padding: 40px 20px;
+  }
+
+  .page {
+    width: var(--page-w);
+    min-height: 1123px;
+    background: var(--white);
+    margin: 0 auto 32px;
+    position: relative;
+    overflow: hidden;
+    page-break-after: always;
+  }
+
+  /* ── PAGE 1: COVER ── */
+  .cover {
+    display: grid;
+    grid-template-rows: 1fr auto;
+    padding: 0;
+  }
+
+  .cover-top {
+    background: var(--black);
+    padding: 64px 56px 56px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 700px;
+  }
+
+  .cover-top::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 0 80px 794px;
+    border-color: transparent transparent var(--white) transparent;
+  }
+
+  .cover-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--accent);
+    text-transform: uppercase;
+  }
+
+  .cover-name {
+    font-family: 'Fraunces', serif;
+    font-size: 96px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 0.9;
+    margin-top: 32px;
+  }
+
+  .cover-role {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    color: var(--accent);
+    margin-top: 24px;
+    letter-spacing: 0.05em;
+  }
+
+  .cover-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 48px;
+  }
+
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    padding: 6px 14px;
+    border-radius: 100px;
+    border: 1px solid rgba(245,243,238,0.25);
+    color: rgba(245,243,238,0.7);
+  }
+
+  .cover-bottom {
+    padding: 48px 56px 56px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+
+  .cover-bio {
+    font-size: 15px;
+    line-height: 1.8;
+    color: #3a3a32;
+  }
+
+  .cover-bio strong {
+    font-weight: 500;
+    color: var(--black);
+  }
+
+  .cover-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-end;
+  }
+
+  .contact-item {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--mid);
+    letter-spacing: 0.04em;
+  }
+
+  /* ── PAGE 2: ROLE + PROBLEM ── */
+  .inner { padding: 64px 56px; }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-bottom: 20px;
+  }
+
+  h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.05;
+    margin-bottom: 24px;
+    color: var(--black);
+  }
+
+  h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-bottom: 12px;
+  }
+
+  p {
+    font-size: 14px;
+    line-height: 1.85;
+    color: #3a3a32;
+  }
+
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
+  }
+
+  /* Role cards */
+  .role-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    margin-top: 32px;
+  }
+
+  .role-card {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px 20px;
+    background: #f0ede5;
+  }
+
+  .role-card-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-bottom: 14px;
+  }
+
+  .role-card-items {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .role-card-items li {
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--black);
+    padding-left: 14px;
+    position: relative;
+  }
+
+  .role-card-items li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent2);
+    font-size: 11px;
+  }
+
+  /* Stack pills */
+  .stack-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 20px;
+  }
+
+  .pill {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    padding: 5px 12px;
+    border-radius: 100px;
+    background: var(--black);
+    color: var(--accent);
+    letter-spacing: 0.04em;
+  }
+
+  /* Problem section */
+  .problem-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 24px;
+  }
+
+  .stat-block {
+    border-left: 3px solid var(--accent2);
+    padding-left: 20px;
+  }
+
+  .stat-num {
+    font-family: 'Fraunces', serif;
+    font-size: 52px;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--black);
+  }
+
+  .stat-label {
+    font-size: 13px;
+    color: var(--mid);
+    margin-top: 6px;
+    line-height: 1.5;
+  }
+
+  /* ── PAGE 3: WHAT I BUILT ── */
+  .feature-block {
+    margin-top: 32px;
+  }
+
+  .feature-header {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 12px;
+  }
+
+  .feature-num {
+    font-family: 'Fraunces', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--accent2);
+    line-height: 1;
+  }
+
+  .feature-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--black);
+  }
+
+  .feature-desc {
+    font-size: 14px;
+    line-height: 1.85;
+    color: #3a3a32;
+    margin-left: 48px;
+  }
+
+  .feature-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+    margin-left: 48px;
+  }
+
+  .detail-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    background: #e8e4db;
+    color: #5a5a50;
+  }
+
+  /* Architecture diagram box */
+  .arch-box {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px 32px;
+    background: var(--black);
+    margin-top: 32px;
+  }
+
+  .arch-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: rgba(200,244,90,0.7);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+
+  .arch-flow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .arch-node {
+    flex: 1;
+    text-align: center;
+    background: rgba(245,243,238,0.07);
+    border: 1px solid rgba(245,243,238,0.15);
+    border-radius: 8px;
+    padding: 16px 8px;
+  }
+
+  .arch-node-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+
+  .arch-node-sub {
+    font-size: 12px;
+    color: rgba(245,243,238,0.5);
+    line-height: 1.4;
+  }
+
+  .arch-arrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 16px;
+    color: rgba(245,243,238,0.3);
+    flex-shrink: 0;
+  }
+
+  /* ── PAGE 4: ITERATIONS ── */
+  .iter-row {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 24px;
+    padding: 28px 0;
+    border-bottom: 1px solid var(--border);
+    align-items: start;
+  }
+
+  .iter-row:last-child { border-bottom: none; }
+
+  .iter-num {
+    font-family: 'Fraunces', serif;
+    font-size: 56px;
+    font-weight: 700;
+    line-height: 1;
+    color: #d4d0c8;
+  }
+
+  .iter-content {}
+
+  .iter-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--black);
+    margin-bottom: 8px;
+  }
+
+  .iter-desc {
+    font-size: 14px;
+    line-height: 1.8;
+    color: #3a3a32;
+  }
+
+  .iter-lesson {
+    display: inline-block;
+    margin-top: 12px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--accent2);
+    background: rgba(58,58,255,0.06);
+    border-radius: 6px;
+    padding: 5px 12px;
+  }
+
+  /* ── PAGE 5: OUTCOME + CLOSE ── */
+  .outcome-banner {
+    background: var(--black);
+    padding: 48px 56px;
+    margin: 0 -56px;
+    position: relative;
+  }
+
+  .outcome-quote {
+    font-family: 'Fraunces', serif;
+    font-size: 28px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--white);
+    line-height: 1.5;
+    max-width: 580px;
+  }
+
+  .outcome-attr {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    margin-top: 20px;
+    letter-spacing: 0.08em;
+  }
+
+  .goals-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    margin-top: 32px;
+  }
+
+  .goal-card {
+    padding: 24px 20px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+  }
+
+  .goal-icon {
+    font-size: 24px;
+    margin-bottom: 12px;
+  }
+
+  .goal-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--black);
+    margin-bottom: 6px;
+  }
+
+  .goal-desc {
+    font-size: 12px;
+    line-height: 1.7;
+    color: var(--mid);
+  }
+
+  .back-cover-inner {
+    padding: 64px 56px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    min-height: 500px;
+  }
+
+  .back-name {
+    font-family: 'Fraunces', serif;
+    font-size: 72px;
+    font-weight: 700;
+    line-height: 0.95;
+    color: var(--black);
+  }
+
+  .back-contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 48px;
+  }
+
+  .back-contact-item {}
+
+  .back-contact-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-bottom: 6px;
+  }
+
+  .back-contact-value {
+    font-size: 15px;
+    color: var(--black);
+    font-weight: 400;
+  }
+
+  .back-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-top: 40px;
+    border-top: 1px solid var(--border);
+  }
+
+  .back-footer-note {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--mid);
+  }
+
+  .accent-bar {
+    width: 48px;
+    height: 4px;
+    background: var(--accent2);
+    border-radius: 2px;
+    margin-bottom: 20px;
+  }
+
+  @media print {
+    html, body { background: white; padding: 0; }
+    .page { margin: 0; box-shadow: none; page-break-after: always; }
+  }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1: COVER -->
+<div class="page cover">
+  <div class="cover-top">
+    <div>
+      <div class="cover-eyebrow">Portfolio · 2025–2026</div>
+      <div class="cover-name">Trina<br>Tan</div>
+      <div class="cover-role">CS &amp; Design Graduate &nbsp;·&nbsp; Full-Stack Engineer &nbsp;·&nbsp; IoT Systems</div>
+    </div>
+    <div class="cover-stack">
+      <span class="tag">React Native</span>
+      <span class="tag">ESP32</span>
+      <span class="tag">MQTT</span>
+      <span class="tag">AWS</span>
+      <span class="tag">SQL</span>
+      <span class="tag">Node.js</span>
+      <span class="tag">IoT</span>
+      <span class="tag">Hardware Integration</span>
+    </div>
+  </div>
+  <div class="cover-bottom">
+    <p class="cover-bio">
+      I'm a <strong>Computer Science and Design</strong> graduate from SUTD who builds systems that bridge software and hardware. For my final year capstone with <strong>Delta Electronics</strong>, I led the full software and IoT stack for BOB the Pod — a smart collapsible workspace pod — shipping a React Native app, an AWS-backed real-time pipeline, and live hardware control via ESP32 and MQTT.
+      <br><br>
+      I'm looking for a <strong>full-time software engineering role</strong> where I can keep working across the full stack and into physical systems.
+    </p>
+    <div class="cover-contact">
+      <div class="contact-item">trina.tan@example.com</div>
+      <div class="contact-item">linkedin.com/in/trinatan</div>
+      <div class="contact-item">github.com/trinatan</div>
+      <div class="contact-item">Singapore</div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 2: MY ROLE + THE PROBLEM -->
+<div class="page">
+  <div class="inner">
+    <div class="section-label">My Role</div>
+    <h2>What I<br>built</h2>
+
+    <div class="role-grid">
+      <div class="role-card">
+        <div class="role-card-title">Mobile App</div>
+        <ul class="role-card-items">
+          <li>React Native from scratch</li>
+          <li>Home &amp; Office editions</li>
+          <li>Real-time pod controls UI</li>
+          <li>API integration with backend</li>
+          <li>Booking &amp; scheduling flows</li>
+        </ul>
+      </div>
+      <div class="role-card">
+        <div class="role-card-title">Backend &amp; Database</div>
+        <ul class="role-card-items">
+          <li>Database schema design</li>
+          <li>SQL queries &amp; backend logic</li>
+          <li>REST API endpoints</li>
+          <li>AWS cloud infrastructure</li>
+          <li>Session &amp; state management</li>
+        </ul>
+      </div>
+      <div class="role-card">
+        <div class="role-card-title">IoT &amp; Electronics</div>
+        <ul class="role-card-items">
+          <li>ESP32 microcontroller setup</li>
+          <li>MQTT pub/sub integration</li>
+          <li>LED lighting circuits</li>
+          <li>Ventilation fan wiring</li>
+          <li>Hardware–software bridge</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="stack-row">
+      <span class="pill">React Native</span>
+      <span class="pill">ESP32</span>
+      <span class="pill">MQTT</span>
+      <span class="pill">AWS</span>
+      <span class="pill">PostgreSQL</span>
+      <span class="pill">Node.js</span>
+      <span class="pill">Soldering</span>
+      <span class="pill">Circuit Design</span>
+    </div>
+
+    <hr class="divider">
+
+    <div class="section-label">The Problem</div>
+    <h2>Why it<br>matters</h2>
+
+    <div class="problem-grid">
+      <div>
+        <p>Hybrid work is permanent, but Singapore homes are shrinking. Existing office pods occupy fixed floor space, can't adapt to residential use, and were never designed for home environments.</p>
+        <br>
+        <p>BOB the Pod addresses this directly: a collapsible, IoT-enabled workspace that folds flat when not in use and deploys into a fully equipped smart office in seconds.</p>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 24px;">
+        <div class="stat-block">
+          <div class="stat-num">78%</div>
+          <div class="stat-label">of Singapore professionals work from home at least 2 days a week</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-num">~800</div>
+          <div class="stat-label">sq ft — average new HDB flat size, down 20% in a decade</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 3: HOW IT WORKS (SYSTEM) -->
+<div class="page">
+  <div class="inner">
+    <div class="section-label">The Build</div>
+    <h2>Full-stack<br>IoT system</h2>
+
+    <div class="feature-block">
+      <div class="feature-header">
+        <div class="feature-num">01</div>
+        <div class="feature-title">React Native Mobile App</div>
+      </div>
+      <p class="feature-desc">Built two editions of the app (Home and Office) from the ground up in React Native. The app gives users real-time control over lighting colour and brightness, fan speed, and environmental presets — all from their phone. I designed the UI architecture, wrote the API integration layer, and built the pod booking and scheduling system for the office edition.</p>
+      <div class="feature-details">
+        <span class="detail-tag">React Native</span>
+        <span class="detail-tag">REST API</span>
+        <span class="detail-tag">Meeting / Reading / Relaxation modes</span>
+        <span class="detail-tag">"Knock" notification feature</span>
+      </div>
+    </div>
+
+    <hr class="divider" style="margin: 28px 0;">
+
+    <div class="feature-block">
+      <div class="feature-header">
+        <div class="feature-num">02</div>
+        <div class="feature-title">AWS Backend &amp; Database</div>
+      </div>
+      <p class="feature-desc">Designed and maintained the database schemas, wrote SQL queries, and built the backend logic that keeps user sessions, pod states, and environmental settings in sync across devices. All commands route through the AWS-hosted backend before reaching the pod hardware.</p>
+      <div class="feature-details">
+        <span class="detail-tag">AWS</span>
+        <span class="detail-tag">PostgreSQL</span>
+        <span class="detail-tag">Schema design</span>
+        <span class="detail-tag">Session management</span>
+      </div>
+    </div>
+
+    <hr class="divider" style="margin: 28px 0;">
+
+    <div class="feature-block">
+      <div class="feature-header">
+        <div class="feature-num">03</div>
+        <div class="feature-title">ESP32 IoT &amp; Hardware Integration</div>
+      </div>
+      <p class="feature-desc">Wired and soldered the LED lighting and ventilation fan circuits, then integrated the ESP32 microcontroller with the AWS backend over MQTT pub/sub. Every tap in the app triggers a live response in the physical pod — lighting changes, fan speeds up, the pod reacts in real time.</p>
+      <div class="feature-details">
+        <span class="detail-tag">ESP32</span>
+        <span class="detail-tag">MQTT</span>
+        <span class="detail-tag">Circuit design</span>
+        <span class="detail-tag">Soldering</span>
+        <span class="detail-tag">Real-time control</span>
+      </div>
+    </div>
+
+    <div class="arch-box">
+      <div class="arch-label">System Architecture</div>
+      <div class="arch-flow">
+        <div class="arch-node">
+          <div class="arch-node-title">Mobile App</div>
+          <div class="arch-node-sub">React Native<br>iOS / Android</div>
+        </div>
+        <div class="arch-arrow">→</div>
+        <div class="arch-node">
+          <div class="arch-node-title">AWS Backend</div>
+          <div class="arch-node-sub">REST API<br>PostgreSQL</div>
+        </div>
+        <div class="arch-arrow">→</div>
+        <div class="arch-node">
+          <div class="arch-node-title">MQTT Broker</div>
+          <div class="arch-node-sub">Pub / Sub<br>real-time</div>
+        </div>
+        <div class="arch-arrow">→</div>
+        <div class="arch-node">
+          <div class="arch-node-title">ESP32</div>
+          <div class="arch-node-sub">Microcontroller<br>hardware bridge</div>
+        </div>
+        <div class="arch-arrow">→</div>
+        <div class="arch-node">
+          <div class="arch-node-title">Pod Hardware</div>
+          <div class="arch-node-sub">LEDs · Fans<br>actuators</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 4: DESIGN ITERATIONS -->
+<div class="page">
+  <div class="inner">
+    <div class="section-label">Process</div>
+    <h2>Three rounds<br>of iteration</h2>
+
+    <div class="iter-row">
+      <div class="iter-num">01</div>
+      <div class="iter-content">
+        <div class="iter-title">Origami + accordion folding structure</div>
+        <p class="iter-desc">Explored collapsible pod structures inspired by origami and accordion mechanisms. Built small-scale prototypes from laser-cut plywood and 3D-printed joints to test deployment. A manual folding chair on wall rails was also explored.</p>
+        <span class="iter-lesson">❌ Too many moving parts — instability, misalignment, inconvenient to operate</span>
+      </div>
+    </div>
+
+    <div class="iter-row">
+      <div class="iter-num">02</div>
+      <div class="iter-content">
+        <div class="iter-title">Aluminium framing + pulley-based deployment</div>
+        <p class="iter-desc">Switched to aluminium frames for structural rigidity and introduced automated chair deployment via a pulley system. Also began integrating smart environmental systems — adjustable lighting, ventilation, and IoT infrastructure planning.</p>
+        <span class="iter-lesson">❌ High fabrication complexity, bulky counterweights, exposed tension cables</span>
+      </div>
+    </div>
+
+    <div class="iter-row">
+      <div class="iter-num">03</div>
+      <div class="iter-content">
+        <div class="iter-title">Slotted plywood + telescopic PVC + linear actuators</div>
+        <p class="iter-desc">The final design used slotted plywood panels, telescopic PVC rails, retractable acoustic curtains (triple-layer wool flannel), and electrically powered linear actuators for chair and table height adjustment. Custom 3D-printed connectors secured the rail system. All IoT, app, and hardware systems were fully integrated and demonstrated live.</p>
+        <span class="iter-lesson" style="background: rgba(200,244,90,0.15); color: #2a6a10;">✓ Stable, practical, fully functional — demonstrated at SUTD capstone exhibition</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 5: OUTCOME + CLOSE -->
+<div class="page">
+  <div class="inner" style="padding-bottom: 0;">
+
+    <div class="section-label">Outcome</div>
+    <h2>What we<br>delivered</h2>
+
+    <div class="goals-grid">
+      <div class="goal-card">
+        <div class="goal-icon">📱</div>
+        <div class="goal-title">Live IoT control</div>
+        <div class="goal-desc">Real-time lighting and ventilation control via mobile app, demonstrated over WiFi at the SUTD capstone exhibition.</div>
+      </div>
+      <div class="goal-card">
+        <div class="goal-icon">🏗️</div>
+        <div class="goal-title">Full-stack system</div>
+        <div class="goal-desc">End-to-end pipeline from mobile UI through AWS backend to physical hardware — designed, built, and maintained by the team.</div>
+      </div>
+      <div class="goal-card">
+        <div class="goal-icon">📐</div>
+        <div class="goal-title">Space-efficient design</div>
+        <div class="goal-desc">Collapsible pod that folds to a fraction of its footprint, purpose-built for Singapore's compact living environments.</div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="section-label">Reflection</div>
+    <p style="font-size: 15px; line-height: 1.9; max-width: 600px;">
+      BOB the Pod taught me that the hardest engineering problems sit at the seams — between hardware and software, between a database and a microcontroller, between a user tapping a phone and a fan spinning in the real world. I'm most energised working in that space, and I'm looking for a team where I can keep doing it at scale.
+    </p>
+
+    <hr class="divider">
+
+    <div style="display: flex; justify-content: space-between; align-items: flex-end; padding-bottom: 56px;">
+      <div>
+        <div class="section-label" style="margin-bottom: 12px;">Get in touch</div>
+        <div style="font-family: 'Fraunces', serif; font-size: 36px; font-weight: 700; line-height: 1.1;">Trina Tan</div>
+        <div style="margin-top: 16px; display: flex; flex-direction: column; gap: 6px;">
+          <div style="font-family: 'DM Mono', monospace; font-size: 12px; color: var(--mid);">trina.tan@example.com</div>
+          <div style="font-family: 'DM Mono', monospace; font-size: 12px; color: var(--mid);">linkedin.com/in/trinatan</div>
+          <div style="font-family: 'DM Mono', monospace; font-size: 12px; color: var(--mid);">github.com/trinatan</div>
+        </div>
+      </div>
+      <div style="text-align: right;">
+        <div style="font-family: 'DM Mono', monospace; font-size: 10px; color: var(--mid); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px;">Tech stack</div>
+        <div style="display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-end; max-width: 280px;">
+          <span class="pill">React Native</span>
+          <span class="pill">ESP32</span>
+          <span class="pill">MQTT</span>
+          <span class="pill">AWS</span>
+          <span class="pill">PostgreSQL</span>
+          <span class="pill">Node.js</span>
+          <span class="pill">IoT</span>
+          <span class="pill">Hardware</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
