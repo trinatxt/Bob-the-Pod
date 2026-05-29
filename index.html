@@ -592,7 +592,11 @@
 
   /* Close section */
   .close-grid {
-    margin-top:24px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    gap: 40px;
+    margin-top: 48px;
   }
 
   .close-name {
