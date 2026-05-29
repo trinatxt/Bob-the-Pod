@@ -592,11 +592,10 @@
 
   /* Close section */
   .close-grid {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: end;
-    gap: 40px;
-    margin-top: 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-bottom: 60px;
   }
 
   .close-name {
@@ -678,10 +677,6 @@
 
   .outcome-banner {
     margin-bottom: 48px;
-  }
-
-  .page:last-of-type .close-grid {
-    margin-bottom: 80px;
   }
 
 </style>
