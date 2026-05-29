@@ -650,20 +650,6 @@
     display: block;
   }
 
-  .portrait-safe {
-    aspect-ratio: auto;
-    min-height: 320px;
-    max-height: 420px;
-    background: #dce8f2;
-  }
-
-  .portrait-safe img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    padding: 12px;
-  }
-
   /* Placeholder is hidden until JS shows it on image error */
   .img-placeholder {
     display: none;
@@ -688,6 +674,11 @@
     font-size: 11px;
     color: var(--slate);
   }
+
+  .outcome-banner {
+    margin-bottom: 48px;
+  }
+
 </style>
 <script>
   document.addEventListener('DOMContentLoaded', () => {
@@ -972,7 +963,7 @@
         <div class="iter-title">Slotted plywood + telescopic PVC + linear actuators</div>
         <p class="iter-desc">The final design used slotted plywood panels, telescopic PVC rails, retractable acoustic curtains (triple-layer wool flannel), and electrically powered linear actuators for chair and table height adjustment. Custom 3D-printed connectors secured the rail system. All IoT, app, and hardware systems were fully integrated and demonstrated live.</p>
         <span class="iter-lesson pass">✓ Stable, practical, fully functional — demonstrated at SUTD capstone exhibition</span>
-        <div class="img-frame portrait-safe" style="margin-top: 14px;">
+        <div class="img-frame" style="margin-top: 14px;">
           <img src="iter3.png" alt="Final pod at exhibition">
           <div class="img-placeholder">
             <div class="img-placeholder-label">Photo — Final pod</div>
