@@ -9,7 +9,6 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    /* Muted blue palette */
     --ink:        #1a2332;
     --ink-soft:   #2e3f55;
     --paper:      #f0eee9;
@@ -67,7 +66,6 @@
     min-height: 680px;
   }
 
-  /* Subtle dot-grid texture */
   .cover-top::before {
     content: '';
     position: absolute;
@@ -77,7 +75,6 @@
     pointer-events: none;
   }
 
-  /* Diagonal slice at bottom */
   .cover-top::after {
     content: '';
     position: absolute;
@@ -635,7 +632,7 @@
     .page { margin: 0; box-shadow: none; page-break-after: always; }
   }
 
-  /* FIX: stop image cropping while keeping layout */
+  /* Image frames — fixed aspect ratio, placeholder hidden by default */
   .img-frame {
     position: relative;
     width: 100%;
@@ -653,14 +650,54 @@
     display: block;
   }
 
+  /* Placeholder is hidden until JS shows it on image error */
+  .img-placeholder {
+    display: none;
+    position: absolute;
+    inset: 0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    background: var(--blue-wash);
+  }
+
+  .img-placeholder-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--blue-muted);
+  }
+
+  .img-placeholder-hint {
+    font-size: 11px;
+    color: var(--slate);
+  }
 </style>
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('img').forEach(img => {
-      const placeholder = img.nextElementSibling;
-      if (!placeholder) return;
-      if (img.src && img.naturalWidth > 0) placeholder.style.display = 'none';
-      img.addEventListener('load', () => { if (img.naturalWidth > 0) placeholder.style.display = 'none'; });
+    document.querySelectorAll('.img-frame').forEach(frame => {
+      const img = frame.querySelector('img');
+      const placeholder = frame.querySelector('.img-placeholder');
+      if (!img || !placeholder) return;
+      // If image already failed to load (cached error state)
+      if (img.complete && img.naturalWidth === 0) {
+        img.style.display = 'none';
+        placeholder.style.display = 'flex';
+      }
+      // Show placeholder if image errors
+      img.addEventListener('error', () => {
+        img.style.display = 'none';
+        placeholder.style.display = 'flex';
+      });
+      // Hide placeholder if image loads successfully
+      img.addEventListener('load', () => {
+        if (img.naturalWidth > 0) {
+          placeholder.style.display = 'none';
+          img.style.display = 'block';
+        }
+      });
     });
   });
 </script>
@@ -832,30 +869,21 @@
       </div>
     </div>
 
-    <!-- PHOTOS: Replace src values below with your pod photos -->
     <div style="margin-top: 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
 
       <div class="img-frame">
-        <img src="podfinal1.jpg" alt="BOB the Pod — finished build 1" style="width:100%;height:100%;object-fit:cover;">
-        <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;background:var(--blue-wash);">
-          <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--blue-muted);">
-            Pod photo 1
-          </div>
-          <div style="font-size:11px;color:var(--slate);">
-            replace src="pod-1.jpg"
-          </div>
+        <img src="podfinal1.jpg" alt="BOB the Pod — finished build 1">
+        <div class="img-placeholder">
+          <div class="img-placeholder-label">Pod photo 1</div>
+          <div class="img-placeholder-hint">replace src="podfinal1.jpg"</div>
         </div>
       </div>
 
       <div class="img-frame">
-        <img src="podfinal2.png" alt="BOB the Pod — finished build 2" style="width:100%;height:100%;object-fit:cover;">
-        <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;background:var(--blue-wash);">
-          <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--blue-muted);">
-            Pod photo 2
-          </div>
-          <div style="font-size:11px;color:var(--slate);">
-            replace src="pod-2.jpg"
-          </div>
+        <img src="podfinal2.png" alt="BOB the Pod — finished build 2">
+        <div class="img-placeholder">
+          <div class="img-placeholder-label">Pod photo 2</div>
+          <div class="img-placeholder-hint">replace src="podfinal2.png"</div>
         </div>
       </div>
 
@@ -905,11 +933,11 @@
         <div class="iter-title">Origami + accordion folding structure</div>
         <p class="iter-desc">Explored collapsible pod structures inspired by origami and accordion mechanisms. Built small-scale prototypes from laser-cut plywood and 3D-printed joints to test deployment. A manual folding chair on wall rails was also explored.</p>
         <span class="iter-lesson fail">✕ Too many moving parts — instability, misalignment, inconvenient to operate</span>
-        <!-- PHOTO: replace src with e.g. src="iter-01.jpg" -->
         <div class="img-frame" style="margin-top: 14px;">
-          <img src="iter1.png" alt="Iteration 01 prototype" style="width:100%;height:100%;object-fit:cover;display:block;">
-          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:var(--blue-wash);">
-            <span style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--blue-muted);">Photo — Prototype 01 · replace src</span>
+          <img src="iter1.png" alt="Iteration 01 prototype">
+          <div class="img-placeholder">
+            <div class="img-placeholder-label">Photo — Prototype 01</div>
+            <div class="img-placeholder-hint">replace src="iter1.png"</div>
           </div>
         </div>
       </div>
@@ -930,11 +958,11 @@
         <div class="iter-title">Slotted plywood + telescopic PVC + linear actuators</div>
         <p class="iter-desc">The final design used slotted plywood panels, telescopic PVC rails, retractable acoustic curtains (triple-layer wool flannel), and electrically powered linear actuators for chair and table height adjustment. Custom 3D-printed connectors secured the rail system. All IoT, app, and hardware systems were fully integrated and demonstrated live.</p>
         <span class="iter-lesson pass">✓ Stable, practical, fully functional — demonstrated at SUTD capstone exhibition</span>
-        <!-- PHOTO: replace src with e.g. src="iter-03-final.jpg" -->
         <div class="img-frame" style="margin-top: 14px;">
-          <img src="iter3.png" alt="Final pod at exhibition" style="width:100%;height:100%;object-fit:cover;display:block;">
-          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:var(--blue-wash);">
-            <span style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--blue-muted);">Photo — Final pod · replace src</span>
+          <img src="iter3.png" alt="Final pod at exhibition">
+          <div class="img-placeholder">
+            <div class="img-placeholder-label">Photo — Final pod</div>
+            <div class="img-placeholder-hint">replace src="iter3.png"</div>
           </div>
         </div>
       </div>
